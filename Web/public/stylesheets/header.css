@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;700&display=swap');
+
+header {
+    font-family: "montserrat", sans-serif;
+    font-size: 1em;
+    background: #01024b;
+    height: var(--header-heigth);
+    color: #CAF0F8;
+}
+
+header #logo {
+    cursor: pointer;
+    margin-right: auto;
+}
+
+header #n_pag {
+
+    color: white; /* Lightest Blue for contrast */
+}
+
+header #n_pag h2 {
+    color: white; /* Lightest Blue for text */
+}
+
+header #logo img {
+    height: 65px;
+    width: 65px;
+    border-radius: 10px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+header #logo img:hover {
+    transform: scale(1.2);
+}
+
+#actions {
+    margin-right: 5%;
+    display: flex;
+    align-items: center;
+    float: right;
+    width: auto;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+header .nav-links,
+header .nav-links-logged,
+header .nav-links-admin,
+header .nav-links-user {
+  min-width: 5em;
+  max-width: 20em;
+}
+
+header .nav-links li,
+header .nav-links-logged li,
+header .nav-links-admin li,
+header .nav-links-user li {
+  display: inline-block;
+  padding: 0.4em 0.5em;
+}
+
+header .nav-links li:hover,
+header .nav-links-logged li:hover,
+header .nav-links-admin li:hover,
+header .nav-links-user li:hover {
+  transform: scale(1.1);
+}
+
+header .nav-links a,
+header .nav-links-logged a,
+header .nav-links-admin a,
+header .nav-links-user a {
+  font-size: 20px;
+  color: white; /* Lightest Blue for contrast */
+  text-decoration: none;
+}
+
+header .nav-links li a:hover,
+header .nav-links-logged li a:hover,
+header .nav-links-admin li a:hover,
+header .nav-links-user li a:hover {
+  color: #ADE8F4; /* Lighter Blue for hover */
+}
+
+header .btn.header-button {
+    font-size: 20px;
+    margin-left: 20px;
+    font-weight: 700;
+    color: #03045E; /* Dark Blue for text */
+    padding: 9px 25px;
+    background: #CAF0F8; /* Lightest Blue for background */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none; 
+    display: inline-block; 
+}
+
+header .btn.header-button:hover {
+    background-color: #ADE8F4; /* Lighter Blue for hover */
+    color: #03045E; /* Dark Blue for text on hover */
+}
+
+header #logo-npag {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    float: left;
+    padding-left: 6px;
+    margin-left: 4%;
+    height: var(--header-heigth);
+}
+
+header #logo-npag #logo {
+    margin-right: 20px;
+}
+
+header #logo-npag #n_pag {
+    width: 8em;
+}
+
+
+@media only screen and (max-width: 600px) {
+    #menu-button {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        position: absolute;
+        background: #01024b;
+        width: 100%;
+        left: 0;
+        top: var(--header-heigth);
+    }
+    .nav-links li {
+        display: block;
+        text-align: center;
+    }
+    .nav-links.nav-open {
+        display: block;
+    }
+}
+
+
+
+@media only screen and (min-width: 601px) {
+    #navbar-desktop {
+        display: block;
+    }
+
+    #navbar-mobile {
+        display: none;
+    }
+}
+
+/* Add this at the end of your header.css file */
+
+@media only screen and (max-width: 600px) {
+    #navbar-desktop {
+        display: none;
+    }
+
+    #navbar-mobile {
+        height: 100%;
+        width: var(--header-heigth);
+        overflow: hidden;
+        display: block;
+    }
+
+    #menu-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    #menu-button div {
+        width: 2rem;
+        height: 0.25rem;
+        background: #fff; /* Or any color you prefer */
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        position: relative;
+        transform-origin: 1px;
+    }
+
+    .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .dropdown {
+        height: 100%;
+        width: 100%;
+        float: left;
+        overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: red;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: fixed;
+        right: 0;
+        top: var(--header-heigth);
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 2;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
+

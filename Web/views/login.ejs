@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <title>MIPS - Inicio de sesión</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/typography.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/buttons.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Montserrat:wght@500;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <%- include('partials/messages') %>
+  
+  <div class="login-container border-rect ">
+    <div class="logo-npag">
+      <div class="logo text-center">
+          <a href="/"><img src="../images/logo.jpg" alt="Logo"></a>
+      </div>
+      <div class="n_pag">
+          <h2 class="font-size-lg"></h2>
+      </div>
+    </div>
+    <h2 class="text-center">Iniciar sesión</h2>
+    <div class="divider"></div>
+    <form action="/login" method="POST">
+      <label for="user">Usuario:</label>
+      <input type="text" id="user" name="user" required class="input-text">
+      
+      <label for="password">Contraseña:</label>
+      <input type="text" id="password" name="password" required class="input-text">
+      
+      <button type="submit" class="button-login-page">Iniciar sesión</button>
+    </form>
+  </div>
+
+  <a href="/loginAdmin" id="admin-login-button" class="center"><h5> Ingresar como administrador </h5></a> 
+</body>
+</html>

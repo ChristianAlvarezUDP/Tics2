@@ -1,0 +1,52 @@
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 200px;
+  background-color: #FFF;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+  padding: var(--spacing-2); /* Moved the padding property here */
+}
+
+.login-container .divider {
+  height: 1px;
+  background-color: var(--color-dark-medium-blue);
+  margin: 16px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="tel"] {
+  width: 90%;
+}
+
+.login-container .logo-npag {
+  margin-bottom: var(--spacing-2);
+}
+
+.login-container .logo-npag .logo img {
+  height: 60px;
+  width: 60px;
+}
+
+.login-container.border-rect {
+  border: 1px solid var(--color-medium-blue);
+}
+
+#admin-login-button:hover {
+  color: var(--admin-color-red);
+}
+
+@media screen and (max-width: 600px) {
+  .login-container.border-rect {
+    margin-top: 50px;
+    border: none;
+    box-shadow: none;
+  }
+  
+
+  .login-container input[type="text"],
+  .login-container input[type="tel"] {
+    width: 95%;
+  }
+}
+

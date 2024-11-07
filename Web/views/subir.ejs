@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Montserrat:wght@500;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <%- include('partials/header') %>
+  <h2>Subir archivo</h2>
+
+  <form action="/subir" method="post" enctype="multipart/form-data">
+    <select name="petid">
+      <% for (var i = 0; i < pets.length; i++) { %>
+        <option value="<%= pets[i]['id'] %>"> <%= pets[i]['name'] %> - <%= pets[i]['clientName'] %> </option>
+      <% } %>
+    </select>
+    Select file to upload:
+    <input type="file" name="file" id="file">
+    <input type="submit" value="Upload File" name="submit">
+  </form>
+  <footer>
+    <%- include('partials/footer') %>
+  </footer>
+</body>
+</html>

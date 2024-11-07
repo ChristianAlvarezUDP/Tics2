@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veterinaria PetsHome</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/typography.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/buttons.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: var(--primary-font);
+      overflow-x: hidden;
+    }
+
+    #wrap {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .background-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/images/fondo_index.svg');
+  background-size: cover; /* Ajustar la imagen para cubrir el contenedor */
+  background-position: center center; /* Centrar la imagen */
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+    header,
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    @media screen and (max-width: 600px) {
+      .background-section {
+        background-attachment: fixed;
+      }
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <div id="wrap">
+    <main>
+      <section class="flex justify-center align-center margin-top-50 section-responsive">
+        <div class="flex-1 text-container"> 
+          <div class="text-hero text-center">  
+            <div style="font-size: 42px;">  <h1 >MIPS</h1>  </div>
+            <div class="center">  
+              <p>Ingresar como administrador o auditor.</p>
+              <% for (var i = 0; i < data1.length; i++) { %>
+                <p><%= data1[i].rut %></p>
+              <% } %>
+           </div>  
+          </div>  
+        
+          <% if (!session.loggedin) { %>
+            <div class="flex justify-center margin-top-20">
+              <a href="/login" class="button button-login">Administrador</a>
+              <a href="/About" class="button button-login">Auditor</a>
+            </div>
+          <% } else { %>
+            <div class="flex justify-center margin-top-20">
+              <% if (session.isAdmin) { %>
+                <a href="/admin" class="button button-adminpanel">Panel de administración</a>
+              <% } else { %>
+                <a href="/usuario" class="button button-mascotasindex">Mis mascotas</a>
+              <% } %>
+              <a href="../About" class="button button-contacto">Más información</a>
+            </div>
+          <% } %>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <div class="background-section"></div> <!-- Nueva sección para la imagen de fondo -->
+
+  <footer>
+    <%- include('partials/footer') %>
+  </footer>
+</body>
+</html>

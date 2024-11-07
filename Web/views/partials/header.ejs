@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/header.css">
+
+<header>
+    <div id="logo-npag">
+        <div id="logo">
+            <a href="/"><img src="../images/logo.jpg" alt="Logo"></a>
+        </div>
+        <div id="n_pag">
+            <h2>MIPS</h2>
+        </div>
+    </div>
+    <div id="actions">
+        <nav id="navbar-desktop">
+            <% if (session.loggedin) { %>
+              <% if (session.isAdmin) { %>
+                <ul class="nav-links nav-links-admin">
+                  <li><a href="../">Inicio</a></li>
+                  <li><a href="/admin">Administración</a></li>
+                  <li><a href="/logout">Salir</a></li>
+                </ul>
+              <% } else { %>
+                <ul class="nav-links nav-links-user">
+                  <li><a href="../">Inicio</a></li>
+                  <li><a href="/usuario">Mis mascotas</a></li>
+                  <li><a href="/logout">Salir</a></li>
+                </ul>
+              <% } %>
+            <% } else { %>
+              <ul class="nav-links">
+                <li><a href="../">Inicio</a></li>
+                <li><a href="../login">Iniciar Sesión</a></li>
+              </ul>
+            <% } %>
+          </nav>
+          
+        <nav id="navbar-mobile">
+            <div class="dropdown center">
+                <button id="menu-button" class="dropbtn">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </button>
+
+                <div class="dropdown-content">
+                <% if (session.loggedin) { %>
+                    <a href="../">Inicio</a>
+                    <a href="/usuario">Mis mascotas</a>
+                    <a href="/logout">Salir</a>
+                <% } else { %>
+                    <a href="../">Inicio</a>
+                    <a href="../login">Iniciar Sesión</a>
+                <% } %>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

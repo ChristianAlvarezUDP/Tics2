@@ -1,0 +1,71 @@
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 200px;
+  background-color: var(--admin-color-white);
+  border: 1px solid var(--admin-color-dark-maroon);
+  border-radius: 5px;
+  box-shadow: 0 1px 4px 0 var(--admin-color-redwood), 0 3px 6px 0 var(--admin-color-redwood);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--admin-color-black);
+}
+
+.login-container .divider {
+  height: 1px;
+  background-color: var(--admin-color-dark-maroon);
+  margin-bottom: 20px;
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Helvetica', sans-serif;
+  color: var(--admin-color-black);
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid var(--admin-color-dark-maroon);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: var(--admin-color-white);
+  color: var(--admin-color-black);
+}
+
+.login-container button {
+  background-color: var(--admin-color-red);
+  color: var(--admin-color-white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Source Sans Pro', sans-serif;
+  transition: 0.3s;
+}
+
+.login-container button:hover {
+  background-color: var(--admin-color-redwood);
+}
+
+/* For devices with width less than or equal to 600px */
+@media screen and (max-width: 600px) {
+  .login-container {
+      margin-top: 50px;
+      border: none;
+      width: 90%;
+      box-shadow:none;
+  }
+
+  .login-container input[type="text"],
+  .login-container input[type="password"] {
+      width: 95%;
+  }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <title>Admin Panel - Login</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/loginA.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/typography.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/buttons.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Montserrat:wght@500;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <%- include('partials/messages') %>
+  <div class="login-container">
+    <h2>Iniciar sesión</h2>
+    <div class="divider"></div> <!-- División entre el título y los campos -->
+    <form action="/loginAdmin" method="POST">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        
+        <label for="contra">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Iniciar sesión</button>
+      </form>
+    </form>
+  </div>
+</body>
+</html>

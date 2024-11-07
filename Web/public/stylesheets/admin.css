@@ -1,0 +1,81 @@
+.material-symbols-outlined {
+    font-size: 30px;
+    color: #fcfcfc;
+}
+
+.center-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#datatable_pets {
+    width: 200%;
+}
+
+.main-container {
+    margin: 25px 2% 10px 2%;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    padding: 20px;
+}
+
+#datatable_pets thead th {
+    text-align: center;
+}
+
+#datatable_pets .dataTables_filter input {
+    float: left;
+}
+
+.dataTables_filter input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.exam-button {
+    font-size: 15px;
+    margin-left: 15px;
+    font-weight: 700;
+    color: #8a1919;
+    padding: 9px 25px;
+    background: #b80909e3;
+    border: none;
+    border-radius: 50%; 
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 50px; 
+    height: 50px;
+}
+
+.exam-button:hover {
+    background-color: #af1e19;
+    color: #b61e13;
+}
+
+/* Cambia el color de fondo y el color del texto de los botones de paginación */
+.pagination .page-item .page-link {
+    background-color: #b80909; /* Cambia esto por tu color de fondo */
+    color: #fcfcfc; /* Cambia esto por tu color de texto */
+    border: none;
+}
+
+/* Cambia el color de fondo y el color del texto del botón de la página actual */
+.pagination .page-item.active .page-link {
+    background-color: #8a1919; /* Cambia esto por tu color de fondo de la página actual */
+    color: #fcfcfc; /* Cambia esto por tu color de texto de la página actual */
+    border: none;
+}
+
+/* Cambia el color de fondo y el color del texto de los botones de paginación al pasar el ratón */
+.pagination .page-item .page-link:hover {
+    background-color: #8a1919; /* Cambia esto por tu color de fondo al pasar el ratón */
+    color: #fcfcfc; /* Cambia esto por tu color de texto al pasar el ratón */
+}

@@ -1,0 +1,233 @@
+/* Colors */
+:root {
+    --primary-color: #333;
+    --secondary-color: #ffb400;
+    --tertiary-color: #1292ee;
+    --border-color: #cccccc;
+    --color-background: #fff;
+    --color-medium-blue: #0077b6;
+    --color-dark-medium-blue: #02476d;
+    --color-light-blue: #ade8f4;
+    --color-medium-light-blue: #48cae4;
+    --color-dark-blue: #03045e;
+}
+
+/* Admin Colors */
+:root {
+  --admin-color-black: #000000;
+  --admin-color-dark-maroon: #3D0000;
+  --admin-color-redwood: #950101;
+  --admin-color-red: #FF0000;
+}
+
+/* Fonts */
+:root {
+  --primary-font: 'Montserrat', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+  --tertiary-font: 'Source Sans Pro', sans-serif;
+}
+
+/* Spacing */
+:root {
+  --header-heigth: 85px;
+
+  --spacing-0: 0;
+  --spacing-1: 10px;
+  --spacing-2: 20px;
+  --spacing-5: 5%;
+  --spacing-8: 200px;
+
+  /* Border radius */
+  --border-radius: 5px;
+
+  /* Hover color */
+  --hover-color: #1170b4;
+
+  /* Shadows */
+  --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Global styles */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: var(--primary-font);
+  overflow-x: hidden;
+}
+
+main {
+  margin: 0 auto;
+  width: 95%;
+  max-width: 75vw;
+  flex-grow: 1;
+}
+
+#wrap {
+  flex: 1 0 auto;
+}
+
+/* Flexbox utility classes */
+.flex {
+  display: flex;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+/* Margin and padding utility classes */
+.margin-top-50 {
+  margin-top: 50px;
+}
+
+/* Miscellaneous utility classes */
+.text-center {
+  text-align: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.transition {
+  transition: all 0.3s ease;
+}
+
+.shadow {
+  box-shadow: var(--shadow);
+}
+  
+.border-radius {
+  border-radius: var(--border-radius);
+}
+  
+.border-rect {
+  border: 1px solid var(--color-medium-blue);
+  padding: var(--spacing-2);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.margin-5 {
+  margin: var(--spacing-5);
+}
+
+.padding-1 {
+  padding: var(--spacing-1);
+}
+
+.scroll-shadows {
+  background:
+    linear-gradient(white 30%,
+      rgba(255, 255, 255, 0)) center top,
+
+    linear-gradient(rgba(255, 255, 255, 0),
+      white 70%) center bottom,
+
+    radial-gradient(farthest-side at 50% 0,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0)) center top,
+
+    radial-gradient(farthest-side at 50% 100%,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0)) center bottom;
+
+  background-repeat: no-repeat;
+  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+  background-attachment: local, local, scroll, scroll;
+}
+
+/* Image styles */
+.image-container-adapat img {
+  width: 100%;
+  height: auto;
+  max-width: 600px; /* limit the maximum width to prevent stretching on large screens */
+  margin: 0 auto; /* center the image */
+}
+
+@media screen and (max-width: 600px) {
+  .image-hide {
+    display: none;
+  }
+
+  main{
+    max-width: 100%;
+  }
+}
+
+/* Responsive image classes */
+.desktop-image {
+  display: block;
+}
+
+.mobile-image {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .desktop-image {
+    display: none;
+  }
+  .mobile-image {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1368px) {
+  main{
+      max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  main{
+      max-width: 960px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+
+  main{
+    max-width: 720px;
+  }
+}
+  
+.absolute-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wordwrap { 
+  white-space: pre-wrap;      /* CSS3 /
+  white-space: -moz-pre-wrap; / Firefox /
+  white-space: -pre-wrap;     / Opera <7 /
+  white-space: -o-pre-wrap;   / Opera 7 /
+  word-wrap: break-word;      / IE */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

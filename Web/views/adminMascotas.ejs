@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <title>Veterinaria - Administrador</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/adminMascotas.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/typography.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/buttons.css">
+  <!-- Bootstrap--> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <!-- DataTable -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Incluir la biblioteca PDF.js -->
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+</head>
+<body>
+  <%- include('partials/adminHeader') %>
+  
+  <div id="wrap">
+  <main class="main-content">
+    <%- include('partials/messages') %>
+    <div class="main-container">
+      <table id="datatable_exams" class="table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th class="centered">Fecha</th>
+            <th class="centered">Nombre</th>
+            <th class="centered">Visible</th>
+            <th class="centered">Ver</th>
+            <% if (privileges.canDelete) { %>
+              <th class="centered">Ocultar</th>
+            <% } %>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (exams.length > 0) { %>
+            <% exams.forEach((exam, index) => { %>
+              <tr>
+                <td><%= exam.datetime.toLocaleDateString("es-CL") %></td>
+                <td><%= exam.original_name %></td>
+                <td><%= exam.in_server %></td>
+                <td>
+                  <button type="button" class="btn btn-primary" data-bs-object="#pdf-object<%= index %>" data-bs-target="#modal<%= index %>" data-bs-source="pdfViewer<%= index %>" data-bs-toggle="modal" data-hashed-name="<%= exam.hashed_name %>">
+                    <img src="/images/ver.png" width="30px" height="30px" alt="Visualizar">
+                  </button>
+                  <div class="modal fade" id="modal<%= index %>" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Previsualización</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-8 pdf-view">
+                              <div id="pdfViewer<%= index %>" style="height:600px;">
+                                <object id="#pdf-object<%= index %>" data="" type="application/pdf" width="100%" height="100%">
+                                  <p>Incapaz de mostrar el archivo PDF. <a href="">Descargar.</a></p>
+                                </object>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <% if (privileges.canComment) { %>
+                                <form id="comment-form-<%= index %>" action="/updateComment" method="post">
+                                  <input type="hidden" name="exam_id" value="<%= exam.id %>">
+                                  <textarea class="form-control" rows="8" maxlength="128" name="comment" placeholder="Comentarios" style="height: 90%;"><%= exam.comment%></textarea>
+                                </form>
+                                <button type="submit" form="comment-form-<%= index %>" class="btn btn-primary mt-2">Actualizar comentario</button>
+                              <% } else { %>
+                                <textarea class="form-control" rows="8" maxlength="128" readonly style="height: 100%;"><%= exam.comment%></textarea>
+                              <% } %>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                          <a href="/download/<%= exam.hashed_name%>" class="btn btn-primary">Descargar</a>
+                        </div>                        
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <% if (privileges.canDelete) { %>
+                  <td>
+                    <form id="delete-form-<%= index %>" method="post" action="/eliminar">
+                      <input type="hidden" name="hashed_name" value="<%= exam.hashed_name %>">
+                    </form>
+                    <button type="submit" form="delete-form-<%= index %>" class="btn btn-primary btn-small"> <!-- Cambiamos el tamaño de los iconos -->
+                      <img src="/images/block_icon.png" width="20px" height="20px" alt="Ocultar"> <!-- Tamaño reducido -->
+                    </button>
+                  </td>
+                <% } %>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="3">No hay exámenes</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% if (privileges.canDelete) { %>
+        <div id="upload-div" class="border-rect border-radius" style="padding: 20px; background-color: #f5f5f5; margin-top: 20px;">
+          <form action="/subir" id="upload-form" method="post" enctype="multipart/form-data">
+            <h3 style="margin-bottom: 10px; color: #333;">Subir un Nuevo Examen</h3>
+            <input type="hidden" id="petid" name="petid" value="<%= petid %>">
+            <label for="file" style="display: block; margin-bottom: 5px; font-weight: bold; color: #555;">Seleccionar Archivo:</label>
+            <input type="file" id="file" name="file" style="margin-bottom: 10px;">
+            <input type="submit" id="upload-submit-btn" value="Subir" class="btn btn-primary">
+          </form>
+        </div>
+      <% } %>
+      
+  </main>
+</div>
+
+  <!-- Bootstrap-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- DataTable -->
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  <!-- Direccion datatables -->
+  <script src="/javascripts/examtable.js"></script>
+
+  <!-- Código para cargar y visualizar el PDF -->
+  <script>
+    document.querySelectorAll('.btn-primary').forEach((btn) => {
+      btn.addEventListener('click', function() {
+        const url = '/showfile/' + this.getAttribute('data-hashed-name');  // Path to the PDF file
+        const viewerId = this.dataset.bsTarget.replace(this.getAttribute('data-bs-target'), this.getAttribute('data-bs-source'));
+        const viewer = document.querySelector(viewerId);  // The div where the PDF will be displayed
+  
+        // Update the data attribute and type of the object tag
+        const objectTag = document.getElementById(this.getAttribute('data-bs-object'));
+        objectTag.setAttribute('data', url);
+        objectTag.setAttribute('type', 'application/pdf');
+  
+        // Clear any existing content in the viewer
+        viewer.innerHTML = '';
+        viewer.appendChild(objectTag);
+      });
+    });
+  </script>
+  
+</body>
+</html>

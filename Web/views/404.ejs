@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/common.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/typography.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/buttons.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/404.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <header>
+        <%- include('partials/header') %>
+    </header>
+    
+    <main class="flex justify-center align-center height-80vh padding-10 ">
+        <div class="text-center flex-1"> 
+            <h1 class="error-heading ">404!</h1>
+            <h2 class="error-subheading">La página que buscas no existe</h2>
+            <h3 class="error-message">No pudimos encontrar la página que buscas</h3>
+        </div>
+        <div class="flex justify-center align-center flex-1 image-hide"> 
+            <img alt="Illustration of a worried person running with many dogs." src="/images/404.avif">
+        </div>
+    </main>
+    
+    <footer>
+        <%- include('partials/footer') %>
+    </footer>
+</body>
+</html>

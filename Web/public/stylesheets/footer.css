@@ -1,0 +1,71 @@
+footer {
+  background-color: #1d2b36;
+  color: #fff;
+  padding: var(--spacing-0);
+  width: 100%;
+  font-family: var(--primary-font);
+}
+
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--spacing-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-links {
+  list-style: none; /* Quitamos los puntos de lista */
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+/* Resto de tu CSS... */
+
+.footer-links ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Centramos horizontalmente */
+  align-items: center; /* Centramos verticalmente */
+  padding: 0;
+  margin: 0;
+  gap: 20px; /* Espacio entre las dos columnas */
+}
+
+.footer-links li {
+  margin: 0 var(--spacing-4); /* Agregamos más espacio entre los elementos */
+  list-style: none; /* Quitamos los puntos de la lista */
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+  font-family: var(--secondary-font);
+}
+
+.footer-links a:hover {
+  color: #ffb400;
+}
+
+.footer-info {
+  margin-top: var(--spacing-2); /* Añadimos más espacio arriba del párrafo */
+}
+
+.footer-info p {
+  margin: 0;
+  color: #fff;
+  font-size: 0.7em;
+  justify-content: center; /* Centramos horizontalmente */
+  align-items: center; /* Centramos verticalmente */
+}

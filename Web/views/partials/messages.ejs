@@ -1,0 +1,9 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/messages.css">
+<% if (typeof alert_messages != 'undefined') { %>
+    <% for (var i = 0; i < alert_messages.length; i++) { %>
+        <div class="alert <%= alert_messages[i]['type'] %>-alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <%= alert_messages[i]['message'] %>
+        </div>
+    <% } %>
+<% } %>

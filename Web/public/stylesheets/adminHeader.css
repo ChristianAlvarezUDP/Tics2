@@ -1,0 +1,67 @@
+:root {
+  --admin-header-width: 13em;
+}
+
+body {
+  flex-direction: row;
+}
+
+.admin-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #9e1c1c; /* Color de fondo más oscuro */
+  color: #ffffff; /* Color de texto en blanco */
+  padding: 20px; /* Espaciado interno */
+  width: var(--admin-header-width);
+  height: 100vh;
+  position: fixed;
+}
+
+#header-wrap {
+  width: var(--admin-header-width);
+  height: 100vh;
+}
+
+.admin-logo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px; /* Espaciado interno */
+  width: 100%;
+}
+
+.admin-logo h1 {
+  margin-top: 10px; /* Margen superior */
+  text-align: center;
+  color: #ffffff; /* Color de texto en blanco */
+  font-size: 2em;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre elementos */
+  padding: 20px; /* Espaciado interno */
+  width: 100%;
+}
+
+.admin-nav a {
+  color: #ffffff; /* Color de enlaces en blanco */
+  text-decoration: none;
+  font-family: var(--primary-font);
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Espaciado interno */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+.admin-nav a:hover {
+  background-color: #8c1813; /* Cambio de color al pasar el cursor */
+  color: #ffffff; /* Color de texto en blanco */
+}
+
+.material-icons {
+  margin-right: 10px; /* Margen derecho */
+  color: #ffffff; /* Color de iconos en blanco */
+}
